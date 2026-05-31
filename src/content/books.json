@@ -31,5 +31,18 @@
     "status": "read",
     "caption": "A wonderful exploration of creative partnerships and video game design.",
     "tags": ["fiction", "gaming", "contemporary"]
+  },
+  {
+    "id": 5,
+    "title": "A Very Special Book",
+    "author": "John Smith",
+    "status": "Reading",
+    "styles": {
+      "card": "bg-indigo-50 border-indigo-200 shadow-md",
+      "title": "font-serif text-xl text-indigo-900",
+      "subtitle": "text-indigo-600 uppercase tracking-widest",
+      "badge": "bg-indigo-600 text-white border-indigo-700"
+    },
+    "tags": ["fiction", "gaming", "contemporary"]
   }
 ]
