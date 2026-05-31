@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 // You might not want to be able to filter by every single tag.
 // 3. Sort by
 
-
-
 /*
 The function of this is to provide a filterable, paginated, and one day sortable grid of tagged objects.
 The tag filtering is intended to become an optional functionality of this. I'm wondering if it can be used to create a gallery with multiple folders?
@@ -61,7 +59,6 @@ export default function FilterableGallery({
         setActiveTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
         setCurrentPage(1);
     };
-
     const clearFilters = () => {
         setActiveTags([]);
         setCurrentPage(1);

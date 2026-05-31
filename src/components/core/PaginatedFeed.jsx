@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 /**
- *
+ * A paginated feed of items
  * @param title                 The title of your feed
  * @param items                 The items to put in your feed
  * @param itemsPerPage          The number of items to display per page

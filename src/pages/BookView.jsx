@@ -1,7 +1,7 @@
 // src/pages/BookView.jsx
 import { useParams, Link } from 'react-router-dom';
 import bookData from '../content/books.json';
-import AppImage from '../components/AppImage';
+import AppImage from '../components/core/AppImage.jsx';
 
 export default function BookView() {
     // 1. Grab the dynamic ID from the URL

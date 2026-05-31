@@ -2,7 +2,7 @@
 import layoutConfig from '../siteconfig/home-layout.json';
 import sidebarLayoutConfig from '../siteconfig/sidebar-layout.json';
 import siteMeta from '../siteconfig/site-meta.json';
-import AppImage from '../components/AppImage';
+import AppImage from '../components/core/AppImage.jsx';
 import WidgetRenderer from '../components/registry/WidgetRenderer';
 
 export default function Home() {

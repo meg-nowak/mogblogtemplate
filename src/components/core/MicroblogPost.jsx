@@ -1,6 +1,7 @@
 // src/components/MicroblogPost.jsx
 import ReactMarkdown from 'react-markdown';
 
+// TODO: Enable some more customisation freedom on this
 export default function MicroblogPost({ post }) {
     return (
         <article className="bg-theme-surface/60 border p-6 rounded-3xl shadow-sm transition-all hover:shadow-md">

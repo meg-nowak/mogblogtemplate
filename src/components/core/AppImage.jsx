@@ -1,4 +1,4 @@
-// src/components/AppImage.jsx
+// src/core/components/AppImage.jsx
 export default function AppImage({
                                      src,
                                      alt = "",

@@ -2,7 +2,9 @@ import videoData from '../content/videos.json';
 import { Card } from './core/BaseCard';
 import FilterableGallery from './core/FilterableGallery';
 
-// Something about this is yuck
+// This should be refactored to use the FilterableCardGallery instead of just the FilterableGallery
+// I'm also not 100% sold on this name for this component
+
 export default function VideoGallery() {
     return (
         <FilterableGallery

@@ -1,6 +1,6 @@
 // src/pages/CustomPage.jsx
 import { Link } from 'react-router-dom';
-import AppImage from '../components/AppImage';
+import AppImage from '../components/core/AppImage.jsx';
 
 // 1. Eagerly grab all JSON files in the pages folder at compile time
 const pageModules = import.meta.glob('/src/content/pages/*.json', { eager: true });
