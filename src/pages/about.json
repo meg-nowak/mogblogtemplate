@@ -1,0 +1,15 @@
+{
+  "title": "About Me",
+  "heroImage": "/images/about-hero.jpg",
+  "intro": "Welcome! I'm a developer, designer, and perpetual learner.",
+  "sections": [
+    {
+      "heading": "My Philosophy",
+      "body": "I believe in building small, independent tools and curating personal digital spaces that feel alive, rather than letting algorithms dictate what we see."
+    },
+    {
+      "heading": "Current Setup",
+      "body": "This entire site is built using React, Vite, and Tailwind CSS, statically deployed to Neocities. It uses a fully decoupled JSON architecture."
+    }
+  ]
+}

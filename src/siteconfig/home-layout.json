@@ -1,10 +1,5 @@
 [
   {
-    "id": "welcome-bio",
-    "type": "bio",
-    "visible": true
-  },
-  {
     "id": "homepage-library",
     "type": "bookTracker",
     "visible": true,
@@ -22,6 +17,11 @@
   {
     "id": "my-videos",
     "type": "videoGallery",
+    "visible": true
+  },
+  {
+    "id": "microblog",
+    "type": "microBlog",
     "visible": true
   }
 ]

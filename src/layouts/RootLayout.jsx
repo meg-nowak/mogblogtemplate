@@ -1,10 +1,11 @@
+// src/layouts/RootLayout.jsx
 import { Outlet, Link } from 'react-router-dom';
 import siteMeta from '../siteconfig/site-meta.json';
-import customPages from '../siteconfig/pages.json';
 import themeConfig from '../siteconfig/theme.json';
+import customPagesConfig from '../siteconfig/custom-pages.json';
 
+// This is the default layout of your website
 export default function RootLayout() {
-    const navPages = customPages.filter(page => page.showInNav === true);
 
     const themeStyles = {
         '--theme-bg': themeConfig.colors.background,
@@ -17,57 +18,41 @@ export default function RootLayout() {
     };
 
     return (
-        <div style={themeStyles} className="min-h-screen bg-[var(--theme-bg)] text-[var(--theme-text)] flex flex-col font-[var(--theme-font)] transition-colors duration-500">
-
-            <header className="border-b border-[var(--theme-border)] bg-[var(--theme-surface)]/40 backdrop-blur-md sticky top-0 z-10">
-                <div className="max-w-5xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-
-                    <Link to="/" className="text-xl font-bold tracking-tight hover:text-[var(--theme-primary)] transition-colors">
-                        {siteMeta.siteTitle}
+        <div style={themeStyles} className="min-h-screen bg-(--theme-bg) text-(--theme-text) flex flex-col font-(--theme-font) transition-colors duration-500">
+            {/* Global Header / Navbar */}
+            <header className="border-b border-(--theme-border) bg-(--theme-surface)/40 backdrop-blur-md sticky top-0 z-10">
+                <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+                    <Link to="/" className="text-xl font-bold tracking-tight hover:text-(--theme-primary)] transition-colors">
+                        {siteMeta.siteTitle || "My Garden"}
                     </Link>
 
-                    {/* Navigation Links */}
-                    <nav className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
+                    <nav className="flex items-center gap-6">
+                        <Link to="/" className="text-sm font-medium hover:text-(--theme-primary)">Home</Link>
+                        <Link to="/library" className="text-sm font-medium hover:text-(--theme-primary)]">Library</Link>
 
-                        {/* Hardcoded Links (If you have any, like Home or Library) */}
-                        <Link to="/" className="hover:text-slate-800 transition-colors">Home</Link>
-                        <Link to="/library" className="hover:text-slate-800 transition-colors">Library</Link>
-
-                        {/* 3. Dynamically Generated Links from pages.json */}
-                        {navPages.map(page => (
+                        {/* Dynamically display your custom page links in navigation */}
+                        {customPagesConfig.map(page => (
                             <Link
                                 key={page.slug}
                                 to={`/${page.slug}`}
-                                className="hover:text-slate-800 transition-colors"
+                                className="text-sm font-medium hover:text-(--theme-primary)"
                             >
                                 {page.title}
                             </Link>
                         ))}
-
-                        {/* External Links from site-meta.json */}
-                        {siteMeta.links.github && (
-                            <a href={siteMeta.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-slate-800 transition-colors ml-2 sm:ml-4 pl-4 sm:pl-6 border-l border-slate-200">
-                                GitHub
-                            </a>
-                        )}
-                        {siteMeta.links.email && (
-                            <a href={`mailto:${siteMeta.links.email}`} className="hover:text-slate-800 transition-colors">
-                                Email
-                            </a>
-                        )}
                     </nav>
                 </div>
             </header>
 
-            {/* Main Content Area */}
-            <main className="flex-grow max-w-5xl mx-auto px-6 py-12 w-full">
-                {/* Bio Section can optionally go here, or be moved to Home.jsx */}
+            {/* Main Application Container */}
+            <main className="grow max-w-6xl w-full mx-auto px-4 py-8">
+                {/* The active page route gets injected right here */}
                 <Outlet />
             </main>
 
-            {/* Dynamic Footer */}
-            <footer className="py-8 text-center text-sm border-t border-[var(--theme-border)] mt-auto bg-[var(--theme-surface)]/30">
-                <p>&copy; {new Date().getFullYear()} {siteMeta.authorName}. Built with React & Tailwind.</p>
+            {/* Global Footer */}
+            <footer className="border-t border-(--theme-border) bg-(--theme-bg) py-6 text-center text-xs text-(--theme-text) mt-12">
+                © {new Date().getFullYear()} {siteMeta.authorName}. Built with React & Vite. Hosted on Neocities.
             </footer>
         </div>
     );

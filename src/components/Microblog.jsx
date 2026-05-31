@@ -1,104 +1,52 @@
 // src/components/Microblog.jsx
 import { useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
+import PaginatedFeed from './core/PaginatedFeed';
+import MicroblogPost from './core/MicroblogPost';
+import { adaptInternalPost } from '../utils/adapters';
 
-// This whole thing needs some serious work.
-// I think this warrants separation of the loading and paging posts from rendering.
-// Move out magic numbers into configurable options that can be passed in as parameters.
-// As well as any non-customizable styling.
-// And setting the title
-
-// Define how many posts to show per page
-const ITEMS_PER_PAGE = 3;
-
-export default function Microblog() {
-    // React shit.
+/**
+ * A Microblog feed
+ * @param title                 OPTIONAL The title of your microblog feed. Default is Thoughts & Updates
+ * @param itemsPerPage          OPTIONAL The number of posts to display per page
+ * @param feedStyles            OPTIONAL Custom styling for each post in your feed
+ * @returns {React.JSX.Element} The Microblog element
+ * @constructor
+ */
+export default function Microblog({
+                                      title = "Thoughts & Updates",
+                                      itemsPerPage = 3,
+                                      feedStyles = {} // Accepts layout config from your JSON!
+                                  }) {
     const [posts, setPosts] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
 
-    // Fetching all of the microblog post markdown files
     useEffect(() => {
-        // Dynamically grab all markdown files in the posts folder
-        const modules = import.meta.glob('/src/posts/*.md', { query: '?raw', eager: true });
+        async function fetchAllPosts() {
+            // 1. Fetch Internal Posts
+            const modules = import.meta.glob('/src/content/posts/*.md', { query: '?raw', eager: true });
+            const internalPosts = Object.entries(modules).map(([filepath, content]) => {
+                const raw = typeof content === 'string' ? content : content.default;
+                return adaptInternalPost(filepath, raw);
+            });
 
-        const loadedPosts = Object.entries(modules).map(([filepath, content]) => {
-            const filename = filepath.split('/').pop() || '';
-            const dateStr = filename.replace('.md', '');
+            // 3. Merge and Sort
+            const allPosts = [...internalPosts].sort(
+                (a, b) => new Date(b.date) - new Date(a.date)
+            );
 
-            return {
-                date: dateStr,
-                content: typeof content === 'string' ? content : content.default || '',
-            };
-        });
+            setPosts(allPosts);
+        }
 
-        // Sort posts by date (newest first)
-        loadedPosts.sort((a, b) => b.date.localeCompare(a.date));
-        // I think this may be broken
-        setPosts(loadedPosts);
+        fetchAllPosts();
     }, []);
 
-    // Pagination
-    const totalPages = Math.ceil(posts.length / ITEMS_PER_PAGE);
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const visiblePosts = posts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
-    // Incoming: Big yucky component
-    // With hardcoded styling that should be configurable
-    // And I think post rendering stuff should be configured separately from rendering all the pagination stuff
-    // Would also love to somehow enable custom styling per-post.
-    // I'd like to make the title configurable too.
     return (
-        <section className="space-y-8">
-            <div className="border-b-2 border-pastel-blue/30 pb-3">
-                <h2 className="text-2xl font-semibold tracking-tight text-slate-700">Thoughts & Updates</h2>
-            </div>
-
-            {posts.length === 0 ? (
-                <p className="text-sm text-slate-400 italic">No posts found yet.</p>
-            ) : (
-                <div className="space-y-6">
-                    {visiblePosts.map((post) => (
-                        <article
-                            key={post.date}
-                            className="bg-white/60 backdrop-blur-sm border border-pastel-purple/40 p-6 rounded-3xl shadow-sm transition-all duration-300 hover:shadow-md hover:bg-white hover:-translate-y-1"
-                        >
-                            <time className="flex items-center gap-2 text-[11px] font-semibold tracking-widest text-slate-400 uppercase">
-                                <span className="w-2 h-2 rounded-full bg-pastel-green"></span>
-                                {post.date}
-                            </time>
-
-                            <div className="mt-4 prose prose-slate prose-p:leading-relaxed prose-a:text-slate-400 hover:prose-a:text-slate-600 prose-a:transition-colors max-w-none text-slate-600 text-sm">
-                                <ReactMarkdown>{post.content}</ReactMarkdown>
-                            </div>
-                        </article>
-                    ))}
-                </div>
-            )}
-
-            {/* Pagination Controls */}
-            {totalPages > 1 && (
-                <div className="flex items-center justify-between pt-6">
-                    <button
-                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                        disabled={currentPage === 1}
-                        className="text-sm px-4 py-2 rounded-xl font-medium text-slate-600 bg-white/50 border border-slate-200 hover:bg-white transition-all disabled:opacity-40 disabled:hover:bg-white/50 cursor-pointer disabled:cursor-not-allowed"
-                    >
-                        &larr; Newer
-                    </button>
-
-                    <span className="text-sm font-medium text-slate-400">
-            Page {currentPage} of {totalPages}
-          </span>
-
-                    <button
-                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                        disabled={currentPage === totalPages}
-                        className="text-sm px-4 py-2 rounded-xl font-medium text-slate-600 bg-white/50 border border-slate-200 hover:bg-white transition-all disabled:opacity-40 disabled:hover:bg-white/50 cursor-pointer disabled:cursor-not-allowed"
-                    >
-                        Older &rarr;
-                    </button>
-                </div>
-            )}
-        </section>
+        <PaginatedFeed
+            title={title}
+            itemsPerPage={itemsPerPage}
+            feedStyles={feedStyles}
+            items={posts}
+            renderItem={(post) => <MicroblogPost key={post.id} post={post} />}
+            emptyMessage={"No posts yet"}
+        />
     );
 }

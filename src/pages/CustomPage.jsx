@@ -1,56 +1,76 @@
-import { useEffect, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
-import pagesConfig from '../siteconfig/pages.json';
+// src/pages/CustomPage.jsx
+import { Link } from 'react-router-dom';
+import AppImage from '../components/AppImage';
 
-export default function CustomPage() {
-    const { slug } = useParams();
-    const [content, setContent] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
+// 1. Eagerly grab all JSON files in the pages folder at compile time
+const pageModules = import.meta.glob('/src/content/pages/*.json', { eager: true });
 
-    // Find the page configuration from the JSON file
-    const pageData = pagesConfig.find(p => p.slug === slug);
+// 2. Format them into a clean lookup map keyed by filename (slug)
+const pagesMap = Object.entries(pageModules).reduce((acc, [filepath, module]) => {
+    const filename = filepath.split('/').pop().replace('.json', '');
+    acc[filename] = module.default || module;
+    return acc;
+}, {});
 
-    useEffect(() => {
-        if (!pageData) return;
+export default function CustomPage({ slug }) {
+    // 3. Find the data matching our current page slug
+    const pageData = pagesMap[slug];
 
-        // Dynamically fetch the markdown file
-        // Note: In Vite, we fetch raw files from the public/ folder or use import.meta.glob
-        // For this template, we'll use import.meta.glob to bundle them automatically
-        const loadContent = async () => {
-            const modules = import.meta.glob('../content/pages/*.md', { query: '?raw', import: 'default' });
-            const filePath = `../content/pages/${pageData.markdownFile}`;
-
-            if (modules[filePath]) {
-                const text = await modules[filePath]();
-                setContent(text);
-            } else {
-                setContent('# Error\nMarkdown file not found.');
-            }
-            setIsLoading(false);
-        };
-
-        loadContent();
-    }, [slug, pageData]);
-
-    // If someone types a URL that isn't in pages.json, send them home
+    // 4. Safely handle missing files so your app never crashes
     if (!pageData) {
-        return <Navigate to="/" replace />;
+        return (
+            <div className="max-w-2xl mx-auto py-20 text-center">
+                <h1 className="text-2xl font-bold text-slate-700 mb-4">Page Content Missing</h1>
+                <p className="text-slate-500 mb-6">Could not find data file at <code>src/content/pages/{slug}.json</code></p>
+                <Link to="/" className="text-blue-500 hover:underline">&larr; Back to Home</Link>
+            </div>
+        );
     }
 
     return (
-        <div className="max-w-3xl mx-auto animate-in fade-in duration-500">
-            <div className="border-b-2 border-pastel-blue/30 pb-4 mb-8">
-                <h1 className="text-3xl font-bold tracking-tight text-slate-800">{pageData.title}</h1>
-            </div>
+        <article className="max-w-4xl mx-auto px-4 py-12 space-y-8 animate-in fade-in duration-500">
+            <Link to="/" className="text-sm font-medium text-slate-400 hover:text-slate-700 mb-4 inline-block">
+                &larr; Return Home
+            </Link>
 
-            {isLoading ? (
-                <div className="text-slate-400 italic">Loading content...</div>
-            ) : (
-                <div className="prose prose-slate prose-headings:text-slate-700 prose-a:text-indigo-500 hover:prose-a:text-indigo-600 max-w-none bg-white/60 backdrop-blur-sm p-8 rounded-3xl border border-slate-200/60 shadow-sm">
-                    <ReactMarkdown>{content}</ReactMarkdown>
-                </div>
+            {/* Optional Hero Header Image */}
+            {pageData.heroImage && (
+                <AppImage
+                    src={pageData.heroImage}
+                    alt={pageData.title}
+                    aspect="aspect-[21/9]"
+                    rounded="rounded-3xl"
+                    animate
+                />
             )}
-        </div>
+
+            {/* Title & Introduction */}
+            <header className="space-y-4">
+                <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">
+                    {pageData.title}
+                </h1>
+                {pageData.intro && (
+                    <p className="text-xl text-slate-600 leading-relaxed font-light">
+                        {pageData.intro}
+                    </p>
+                )}
+            </header>
+
+            <hr className="border-slate-200" />
+
+            {/* Dynamic Sections Loop */}
+            <div className="prose prose-slate max-w-none space-y-10">
+                {pageData.sections?.map((section, index) => (
+                    <section key={index} className="space-y-3">
+                        <h2 className="text-2xl font-bold text-slate-800 m-0">
+                            {section.heading}
+                        </h2>
+                        <p className="text-slate-600 leading-relaxed text-base m-0">
+                            {section.body}
+                        </p>
+                    </section>
+                ))}
+            </div>
+        </article>
     );
 }

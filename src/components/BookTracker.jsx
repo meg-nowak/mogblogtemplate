@@ -33,6 +33,9 @@ export default function BookTracker({cardStyles}) {
                         />
                         <Card.Body>{book.review}</Card.Body>
                     </Card.Content>
+                    <Card.Action to={`/book/${book.id}`}>
+                        Read full review
+                    </Card.Action>
                 </>
             )}
         />
