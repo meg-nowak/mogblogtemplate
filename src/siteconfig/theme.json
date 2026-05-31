@@ -1,0 +1,13 @@
+{
+  "colors": {
+    "background": "#FDFBF7",
+    "surface": "#FFFFFF",
+    "text": "#334155",
+    "primary": "#818CF8",
+    "secondary": "#A7F3D0",
+    "border": "#E2E8F0"
+  },
+  "fonts": {
+    "base": "'Inter', system-ui, sans-serif"
+  }
+}

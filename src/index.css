@@ -1,0 +1,28 @@
+/* src/index.css */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* =========================================
+     🎨 THEME CONFIGURATION
+     Change these hex codes to personalize your site!
+     ========================================= */
+  --color-theme-bg: var(--theme-bg);
+  --color-theme-surface: var(--theme-surface);
+  --color-theme-text: var(--theme-text);
+  --color-theme-primary: var(--theme-primary);
+  --color-theme-secondary: var(--theme-secondary);
+  --color-theme-border: var(--theme-border);
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* Applying the base background color globally */
+@layer base {
+  body {
+    background-color: var(--color-theme-bg);
+    color: var(--color-slate-800);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

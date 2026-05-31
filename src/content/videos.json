@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "15 Minute Gentle Morning Flow",
+    "url": "https://youtube.com/watch?placeholder1",
+    "comment": "A great way to wake up the spine. The pacing here is perfect.",
+    "tags": ["yoga", "morning"]
+  },
+  {
+    "id": 2,
+    "title": "Understanding the Psoas Muscle",
+    "url": "https://youtube.com/watch?placeholder2",
+    "comment": "Fascinating breakdown of how this connects the upper and lower body.",
+    "tags": ["anatomy", "yoga"]
+  },
+  {
+    "id": 3,
+    "title": "Calming Pastel Desk Setup",
+    "url": "https://youtube.com/watch?placeholder3",
+    "comment": "Taking so much inspiration from the soft lighting in this video.",
+    "tags": ["aesthetic", "tech"]
+  },
+  {
+    "id": 4,
+    "title": "Anatomy of the Core for Yoga Practitioners",
+    "url": "https://youtube.com/watch?placeholder4",
+    "comment": "Super clear visual animations showing how the transverse abdominis supports balance.",
+    "tags": ["anatomy", "yoga"]
+  },
+  {
+    "id": 5,
+    "title": "Lo-Fi Beats for Coding and Relaxation",
+    "url": "https://youtube.com/watch?placeholder5",
+    "comment": "My go-to background stream when I am working on CSS layouts.",
+    "tags": ["aesthetic", "tech"]
+  },
+  {
+    "id": 6,
+    "title": "Evening Wind Down Yin Yoga",
+    "url": "https://youtube.com/watch?placeholder6",
+    "comment": "Deep hip openers that are amazing for releasing tension after a long day at the desk.",
+    "tags": ["yoga", "morning"]
+  },
+  {
+    "id": 7,
+    "title": "Linux Mint Desktop Customization Guide",
+    "url": "https://youtube.com/watch?placeholder7",
+    "comment": "Great tips on configuring panel transparency and custom icon packs cleanly.",
+    "tags": ["tech"]
+  },
+  {
+    "id": 8,
+    "title": "The Science of Deep Breathing",
+    "url": "https://youtube.com/watch?placeholder8",
+    "comment": "A look into how pranayama affects the vagus nerve and nervous system.",
+    "tags": ["anatomy", "yoga"]
+  },
+  {
+    "id": 9,
+    "title": "Cozy Pixel Art Speedpaint Showcase",
+    "url": "https://youtube.com/watch?placeholder9",
+    "comment": "The color selection in this pixel loop is incredibly soothing.",
+    "tags": ["aesthetic"]
+  },
+  {
+    "id": 10,
+    "title": "Vite 4 vs Vite 5 Build Performance Test",
+    "url": "https://youtube.com/watch?placeholder10",
+    "comment": "A deep dive into why static builds deploy so fast on static hosting servers.",
+    "tags": ["tech"]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "siteTitle": "My Cozy Corner",
+  "authorName": "Friend's Name",
+  "bio": "Welcome to my digital garden.",
+  "links": {
+    "github": "https://github.com/...",
+    "email": "hello@example.com"
+  }
+}

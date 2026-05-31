@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "title": "Stardew Valley",
+    "platform": "PC",
+    "status": "playing",
+    "review": "Focusing heavily on optimizing my greenhouse layout this season. It remains the perfect way to wind down.",
+    "slug": "stardew-valley",
+    "coverUrl": ""
+  },
+  {
+    "id": 2,
+    "title": "Hollow Knight",
+    "platform": "Steam Deck",
+    "status": "paused",
+    "review": "Taking a break before tackling the final pantheon. The atmosphere is incredible, but I need a breather.",
+    "slug": ""
+  }
+]

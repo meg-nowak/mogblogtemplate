@@ -1,0 +1,11 @@
+[
+  {
+    "id": "currently-playing",
+    "type": "gameTracker",
+    "props": {
+      "title": "Currently Playing",
+      "limit": 4
+    },
+    "visible": true
+  }
+]

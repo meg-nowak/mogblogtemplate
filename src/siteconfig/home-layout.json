@@ -1,0 +1,20 @@
+[
+  {
+    "id": "welcome-bio",
+    "type": "bio",
+    "visible": true
+  },
+  {
+    "id": "reading-tracker",
+    "type": "bookTracker",
+    "props": {
+      "showLibraryLink": true
+    },
+    "visible": true
+  },
+  {
+    "id": "my-videos",
+    "type": "videoGallery",
+    "visible": true
+  }
+]

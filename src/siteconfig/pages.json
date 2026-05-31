@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "about",
+    "title": "About Me",
+    "markdownFile": "about.md",
+    "showInNav": true
+  },
+  {
+    "slug": "desk-setup",
+    "title": "My Desk Setup",
+    "markdownFile": "setup.md",
+    "showInNav": false
+  }
+]

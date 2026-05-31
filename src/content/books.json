@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "Braiding Sweetgrass",
+    "author": "Robin Wall Kimmerer",
+    "status": "reading",
+    "caption": "Taking this one slowly. The chapter on the grammar of animacy is completely changing how I view the world around me.",
+    "coverUrl": "/images/sweetgrass.jpg",
+    "tags": ["nature", "indigenous science", "non-fiction"]
+  },
+  {
+    "id": 2,
+    "title": "The Dispossessed",
+    "author": "Ursula K. Le Guin",
+    "status": "tbr",
+    "caption": "Next on my sci-fi list!",
+    "tags": ["sci-fi", "politics", "fiction"]
+  },
+  {
+    "id": 3,
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "status": "tbr",
+    "coverUrl": "/images/atomic-habits.jpg",
+    "tags": ["productivity", "non-fiction"]
+  },
+  {
+    "id": 4,
+    "title": "Tomorrow, and Tomorrow, and Tomorrow",
+    "author": "Gabrielle Zevin",
+    "status": "read",
+    "caption": "A wonderful exploration of creative partnerships and video game design.",
+    "tags": ["fiction", "gaming", "contemporary"]
+  }
+]
