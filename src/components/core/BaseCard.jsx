@@ -1,5 +1,6 @@
-// src/components/BaseCard.jsx
 import { Link } from 'react-router-dom';
+
+// There's something I don't like about this.. I'm not sure what though.
 
 // 1. The Main Wrapper
 export function Card({ children, className = "" }) {

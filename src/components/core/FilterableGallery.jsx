@@ -1,7 +1,32 @@
-// src/components/FilterableGallery.jsx
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
+// PLANNED FUTURE FEATURES AND IDEAS: Sort by.
+// 1. turn viewAllTo and viewAllText into one object with multiple fields for this, it can be one object in the config json file
+// 2.turn this items object into two - one for the actual items and the other for the tags to display in the bar and filter by.
+// You might not want to be able to filter by every single tag.
+// 3. Sort by
+
+
+
+/*
+The function of this is to provide a filterable, paginated, and one day sortable grid of tagged objects.
+The tag filtering is intended to become an optional functionality of this. I'm wondering if it can be used to create a gallery with multiple folders?
+Right now it is being used only by FilterableCardGallery, but it will be extended by ImageGallery in future to display a gallery of image tiles rather than cards
+*/
+
+/**
+ * This takes all of your items and item card styling to show, some settings, and
+ * @param title                 The title of your gallery
+ * @param items                 The set of item cards you want to display
+ * @param itemsPerPage          The number of items you want to show per page
+ * @param emptyMessage          The message you want to show when there are no cards to display. Defaults to No items found
+ * @param renderItem            How you want your item to look like
+ * @param viewAllTo             The link to your view all/more page. Formatted as route path (see below)
+ * @param viewAllText           The text you want on the view all link. Defaults to View all
+ * @returns {React.JSX.Element} The FilterableGallery element
+ * @constructor
+ */
 export default function FilterableGallery({
                                               title,
                                               items = [],
@@ -11,9 +36,11 @@ export default function FilterableGallery({
                                               viewAllTo, // The route path (e.g., '/library')
                                               viewAllText = "View all" // Default text if none is provided
                                               }) {
+    // React state shit
     const [activeTags, setActiveTags] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
+    // HOT TAKE: Tags should be extracted further up or somewhere else.
     // 1. Extract all unique tags dynamically from whatever items are passed in
     const allTags = useMemo(() => {
         const tags = new Set();
@@ -26,6 +53,7 @@ export default function FilterableGallery({
         return Array.from(tags).sort();
     }, [items]);
 
+    // React shit.
     // 2. State Handlers
     const toggleTag = (tag) => {
         setActiveTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
@@ -37,6 +65,7 @@ export default function FilterableGallery({
         setCurrentPage(1);
     };
 
+    // Filter, paginate and one day sort maybe???
     // 3. Math & Slicing
     const filteredItems = items.filter(item => {
         if (activeTags.length === 0) return true;
@@ -48,15 +77,17 @@ export default function FilterableGallery({
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleItems = filteredItems.slice(startIndex, startIndex + itemsPerPage);
 
+    // BIG FKIN COMPONENT
     return (
         <section className="space-y-6">
+            {/* Title of the Gallery */}
             {title && (
                 <div className="border-b-2 border-theme-secondary/30 pb-3 flex justify-between items-end">
                     <h2 className="text-2xl font-semibold tracking-tight text-theme-text">{title}</h2>
                 </div>
             )}
 
-            {/* Tag Filter Bar */}
+            {/* Tag Filter Bar - WEIRD LOGIC INCOMING!!! HARDCODED TEXT COLOUR ALERT!! */}
             {allTags.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                     {allTags.map(tag => {
@@ -87,10 +118,11 @@ export default function FilterableGallery({
                 </div>
             )}
 
-            {/* The Grid - Notice how it calls the renderItem function! */}
+            {/* The GRID OF CARDS - visibleItems and their information get put on the grid and renderItem displays it */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {visibleItems.map((item, index) => renderItem(item, index))}
 
+                {/* HARDCODED TEXT COLOUR ALERT!! This is what shows up if there are no cards to show */}
                 {filteredItems.length === 0 && (
                     <div className="col-span-full p-8 text-center bg-theme-surface/40 rounded-2xl border border-dashed border-theme-border">
                         <p className="text-slate-500 text-sm">{emptyMessage}</p>
@@ -98,7 +130,7 @@ export default function FilterableGallery({
                 )}
             </div>
 
-            {/* Pagination */}
+            {/* Pagination controls - next/previous page links. Also HARDCODED TEXT COLOUR ALERT!!! */}
             {totalPages > 1 && (
                 <div className="flex items-center justify-between pt-4 border-t border-theme-border/40">
                     <button

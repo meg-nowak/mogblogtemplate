@@ -7,6 +7,12 @@ import BookTracker from '../components/BookTracker';
 import GameTracker from "../components/GameTracker.jsx";
 import HeaderImage from '../components/HeaderImage';
 
+// So the idea of this file is that this is where you customise the layout of your home page.
+// It needs a little bit of work, since the widget components like booktracker and gametracker etc are configured in home-layout and sidebar-layout
+// The overall design of this needs a bit of a think, because I want it to balance well between configuring the layout in a way that is super easy but still allows for freedom
+
+// I've got a bad feeling about this...
+// I feel like this should be its own thing
 const ComponentMap = {
     bio: () => (
         <div className="prose prose-slate max-w-none mb-12">
@@ -56,7 +62,6 @@ export default function Home() {
 
                 {/* Main Column: Feed (Spans 2 columns) */}
                 <div className="md:col-span-2 space-y-16 animate-in fade-in duration-500">
-
                     {activeMainSections.map(renderSection)}
                 </div>
 
