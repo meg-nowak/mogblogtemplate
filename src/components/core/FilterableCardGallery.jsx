@@ -10,6 +10,8 @@ I doubt this file will need to functionally change often
 /**
  * Renders item cards and optional styles in a filterable, paged card gallery
  * @param items                 The set of item cards you want to display
+ * @param rows                  OPTIONAL number of rows of cards in the gallery, default =2
+ * @param cols                  OPTIONAL number of columns of cards in the gallery, default = 2
  * @param cardStyles            OPTIONAL extra styling for all cards in the gallery
  * @param renderCardContent     A function passed in to define the inner content
  * @param galleryProps          Passed down props to the FilterableGallery
@@ -18,6 +20,8 @@ I doubt this file will need to functionally change often
  */
 export default function FilterableCardGallery({
                                                   items,
+                                                  rows = 2,
+                                                  cols = 2,
                                                   cardStyles = {},
                                                   renderCardContent, // A function passed in to define the inner content
                                                   ...galleryProps
@@ -26,6 +30,8 @@ export default function FilterableCardGallery({
         <FilterableGallery
             {...galleryProps}
             items={items}
+            rows={rows}
+            cols={cols}
             renderItem={(item) => (
                 <Card
                     key={item.id}

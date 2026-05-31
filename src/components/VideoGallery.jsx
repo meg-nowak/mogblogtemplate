@@ -17,21 +17,21 @@ export default function VideoGallery() {
 
                         <Card.Body>
                             {video.comment && (
-                                <p className="text-sm text-slate-600 line-clamp-2 mb-3">
+                                <p className="text-sm text-(--theme-text) line-clamp-2 mb-3">
                                     {video.comment}
                                 </p>
                             )}
 
                             <div className="flex flex-wrap gap-1.5">
                                 {video.tags?.map(tag => (
-                                    <span key={tag} className="text-[10px] uppercase tracking-wider text-slate-400 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded-md">
+                                    <span key={tag} className="text-[10px] uppercase tracking-wider text-slate-400 bg-slate-50 border(--theme-border) px-2 py-0.5 rounded-md">
                                         {tag}
                                     </span>
                                 ))}
                             </div>
                         </Card.Body>
 
-                        <div className="mt-3 pt-3 border-t border-slate-100/40">
+                        <div className="mt-3 pt-3 border-t border(--theme-border)">
                             <a
                                 href={video.url}
                                 target="_blank"

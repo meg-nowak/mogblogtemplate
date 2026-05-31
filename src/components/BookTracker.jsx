@@ -10,17 +10,21 @@ import FilterableCardGallery from "./core/FilterableCardGallery.jsx";
 /**
  * A tagged, filterable Book Tracker to show what you have and will be reading.
  * @param cardStyles            OPTIONAL - The styling you want to apply to all the book cards
+ * @param rows                  OPTIONAL - Number of rows to display per page (default: 2)
+ * @param cols                  OPTIONAL - Number of columns in the grid (default: 2)
  * @returns {React.JSX.Element} The BookTracker element
  * @constructor
  */
-export default function BookTracker({cardStyles}) {
-    // What the fuck does this do????
+export default function BookTracker({cardStyles, rows = 2, cols = 2}) {
+    //
     const books = bookData.map(b => ({ ...b, tags: [b.status, ...(b.genres || [])].filter(Boolean) }));
 
     return (
         <FilterableCardGallery
             title="Digital Library"
             items={books}
+            rows={rows}
+            cols={cols}
             cardStyles={cardStyles}
             renderCardContent={(book, styles) => (
                 <>

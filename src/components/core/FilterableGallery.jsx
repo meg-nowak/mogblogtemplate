@@ -19,7 +19,8 @@ Right now it is being used only by FilterableCardGallery, but it will be extende
  * This takes all of your items and item card styling to show, some settings, and
  * @param title                 The title of your gallery
  * @param items                 The set of item cards you want to display
- * @param itemsPerPage          The number of items you want to show per page
+ * @param rows                  The number of rows of items you want to show per page Default is 2
+ * @param cols                  The number of columns of items you want to show per page Default is 2
  * @param emptyMessage          The message you want to show when there are no cards to display. Defaults to No items found
  * @param renderItem            How you want your item to look like
  * @param viewAllTo             The link to your view all/more page. Formatted as route path (see below)
@@ -30,7 +31,8 @@ Right now it is being used only by FilterableCardGallery, but it will be extende
 export default function FilterableGallery({
                                               title,
                                               items = [],
-                                              itemsPerPage = 6,
+                                              rows = 2,
+                                              cols = 2,
                                               emptyMessage = "No items found.",
                                               renderItem,
                                               viewAllTo, // The route path (e.g., '/library')
@@ -73,9 +75,22 @@ export default function FilterableGallery({
         return itemTags.some(tag => activeTags.includes(tag));
     });
 
+    const itemsPerPage = rows * cols;
     const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleItems = filteredItems.slice(startIndex, startIndex + itemsPerPage);
+
+    // Tailwind Grid Lookup
+    // This ensures Tailwind doesn't purge dynamic grid column classes.
+    // It defaults to 1 column on mobile, and scales up on 'sm' screens.
+    const gridColsClass = {
+        1: 'sm:grid-cols-1',
+        2: 'sm:grid-cols-2',
+        3: 'sm:grid-cols-3',
+        4: 'sm:grid-cols-4',
+        5: 'sm:grid-cols-5',
+        6: 'sm:grid-cols-6',
+    }[cols] || 'sm:grid-cols-2'; // Fallback if someone passes an unsupported number
 
     // BIG FKIN COMPONENT
     return (
@@ -110,7 +125,7 @@ export default function FilterableGallery({
                     {activeTags.length > 0 && (
                         <button
                             onClick={clearFilters}
-                            className="text-xs px-3 py-1.5 text-slate-400 hover:text-slate-600 transition-colors"
+                            className="text-xs px-3 py-1.5 text-slate-400 hover:text-theme-primary transition-colors"
                         >
                             Clear filters
                         </button>
@@ -119,13 +134,13 @@ export default function FilterableGallery({
             )}
 
             {/* The GRID OF CARDS - visibleItems and their information get put on the grid and renderItem displays it */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className={`grid ${gridColsClass} gap-4`}>
                 {visibleItems.map((item, index) => renderItem(item, index))}
 
                 {/* HARDCODED TEXT COLOUR ALERT!! This is what shows up if there are no cards to show */}
                 {filteredItems.length === 0 && (
                     <div className="col-span-full p-8 text-center bg-theme-surface/40 rounded-2xl border border-dashed border-theme-border">
-                        <p className="text-slate-500 text-sm">{emptyMessage}</p>
+                        <p className="text-theme-primary text-sm">{emptyMessage}</p>
                     </div>
                 )}
             </div>
