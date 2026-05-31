@@ -1,4 +1,3 @@
-// src/components/BookTracker.jsx
 import bookData from '../content/books.json';
 import { Card } from './core/BaseCard';
 import FilterableCardGallery from "./core/FilterableCardGallery.jsx";

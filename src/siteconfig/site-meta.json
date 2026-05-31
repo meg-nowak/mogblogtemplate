@@ -5,5 +5,6 @@
   "links": {
     "github": "https://github.com/...",
     "email": "hello@example.com"
-  }
+  },
+  "heroImage": "./src/assets/IMG_0091.PNG"
 }

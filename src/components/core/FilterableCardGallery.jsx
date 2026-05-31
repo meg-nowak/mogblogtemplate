@@ -1,4 +1,3 @@
-// src/components/FilterableCardGallery.jsx
 import { Card } from './BaseCard';
 import FilterableGallery from './FilterableGallery';
 

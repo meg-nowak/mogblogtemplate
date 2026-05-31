@@ -5,6 +5,7 @@ import Microblog from '../components/Microblog';
 import VideoGallery from '../components/VideoGallery';
 import BookTracker from '../components/BookTracker';
 import GameTracker from "../components/GameTracker.jsx";
+import HeaderImage from '../components/HeaderImage';
 
 const ComponentMap = {
     bio: () => (
@@ -44,18 +45,28 @@ export default function Home() {
     };
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+            <HeaderImage
+                src={siteMeta.heroImage}
+                alt="A beautiful landscape"
+                height="h-80"
+            />
+            <br/>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            {/* Main Column: Feed (Spans 2 columns) */}
-            <div className="md:col-span-2 space-y-16 animate-in fade-in duration-500">
-                {activeMainSections.map(renderSection)}
+                {/* Main Column: Feed (Spans 2 columns) */}
+                <div className="md:col-span-2 space-y-16 animate-in fade-in duration-500">
+
+                    {activeMainSections.map(renderSection)}
+                </div>
+
+                {/* Sidebar Column (Spans 1 column) */}
+                <div className="space-y-8 animate-in fade-in duration-500 delay-100">
+                    {activeSidebarSections.map(renderSection)}
+                </div>
+
             </div>
-
-            {/* Sidebar Column (Spans 1 column) */}
-            <div className="space-y-8 animate-in fade-in duration-500 delay-100">
-                {activeSidebarSections.map(renderSection)}
-            </div>
-
         </div>
+
     );
 }
