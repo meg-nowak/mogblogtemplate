@@ -2,13 +2,21 @@
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 
+// This whole thing needs some serious work.
+// I think this warrants separation of the loading and paging posts from rendering.
+// Move out magic numbers into configurable options that can be passed in as parameters.
+// As well as any non-customizable styling.
+// And setting the title
+
 // Define how many posts to show per page
 const ITEMS_PER_PAGE = 3;
 
 export default function Microblog() {
+    // React shit.
     const [posts, setPosts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
+    // Fetching all of the microblog post markdown files
     useEffect(() => {
         // Dynamically grab all markdown files in the posts folder
         const modules = import.meta.glob('/src/posts/*.md', { query: '?raw', eager: true });
@@ -25,16 +33,20 @@ export default function Microblog() {
 
         // Sort posts by date (newest first)
         loadedPosts.sort((a, b) => b.date.localeCompare(a.date));
+        // I think this may be broken
         setPosts(loadedPosts);
     }, []);
 
-    // Pagination calculations
+    // Pagination
     const totalPages = Math.ceil(posts.length / ITEMS_PER_PAGE);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-
-    // Slice the array to get only the current page's posts
     const visiblePosts = posts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
+    // Incoming: Big yucky component
+    // With hardcoded styling that should be configurable
+    // And I think post rendering stuff should be configured separately from rendering all the pagination stuff
+    // Would also love to somehow enable custom styling per-post.
+    // I'd like to make the title configurable too.
     return (
         <section className="space-y-8">
             <div className="border-b-2 border-pastel-blue/30 pb-3">

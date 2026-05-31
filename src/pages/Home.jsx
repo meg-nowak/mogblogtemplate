@@ -13,6 +13,7 @@ import HeaderImage from '../components/HeaderImage';
 
 // I've got a bad feeling about this...
 // I feel like this should be its own thing
+// I think it would be good to provide visibility of what widgets are allowed and how to configure them somewhere
 const ComponentMap = {
     bio: () => (
         <div className="prose prose-slate max-w-none mb-12">

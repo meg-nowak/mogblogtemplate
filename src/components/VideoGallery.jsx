@@ -1,8 +1,8 @@
-// src/components/VideoGallery.jsx
 import videoData from '../content/videos.json';
 import { Card } from './core/BaseCard';
 import FilterableGallery from './core/FilterableGallery';
 
+// Something about this is yuck
 export default function VideoGallery() {
     return (
         <FilterableGallery

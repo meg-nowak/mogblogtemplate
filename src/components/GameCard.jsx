@@ -1,6 +1,7 @@
 // src/components/GameCard.jsx
 import { Card } from './core/BaseCard.jsx';
 
+// I don't feel like this needs to be its own function, I think this stuff could be fine inside the game tracker.
 export default function GameCard({ title, platform, status, review, slug, coverUrl }) {
 
     // A tiny helper to map the game status to our BaseCard badge variants
