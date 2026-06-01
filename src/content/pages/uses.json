@@ -1,0 +1,15 @@
+{
+  "title": "New-page Page",
+  "heroImage": "/images/default-hero.jpg",
+  "intro": "Welcome to my new custom page! Edit this intro text in your JSON file.",
+  "sections": [
+    {
+      "id": "new-page-section-1",
+      "type": "bio",
+      "props": {
+        "heading": "First Section",
+        "body": "Start customizing your content here..."
+      }
+    }
+  ]
+}

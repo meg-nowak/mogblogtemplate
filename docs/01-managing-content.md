@@ -41,7 +41,7 @@ Open `src/siteconfig/custom-pages.json`. This file tells the router and the navi
 ```JSON
 {
 "title": "My Setup",
-"slug": "uses"
+"slug": "uses.json"
 }
 ```
 

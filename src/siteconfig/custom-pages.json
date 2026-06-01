@@ -1,3 +1,17 @@
 [
-  {"title": "Uses", "slug": "uses"}
+  {
+    "title": "About Me",
+    "slug": "about",
+    "showInNavbar": false
+  },
+  {
+    "title": "Project Changelog",
+    "slug": "changelog",
+    "showInNavbar": true
+  },
+  {
+    "title": "New-page Page",
+    "slug": "uses",
+    "showInNavbar": true
+  }
 ]

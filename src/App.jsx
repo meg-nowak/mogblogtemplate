@@ -25,7 +25,7 @@ export default function App() {
             {customPagesConfig.map((page) => (
                 <Route
                     key={page.slug}
-                    path={`/${page.slug}`}
+                    path={":slug"}
                     element={<CustomPage slug={page.slug} />}
                 />
             ))}
