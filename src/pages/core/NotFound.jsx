@@ -1,6 +1,6 @@
 // THIS IS ALL PLACEHOLDER CODE
 import { useState, useMemo } from 'react';
-import bookData from '../content/books.json';
+import bookData from '../../content/books.json';
 
 const ITEMS_PER_PAGE = 6;
 

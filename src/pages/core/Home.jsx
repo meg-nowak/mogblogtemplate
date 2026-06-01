@@ -1,10 +1,13 @@
 // src/pages/Home.jsx
-import layoutConfig from '../siteconfig/home-layout.json';
-import sidebarLayoutConfig from '../siteconfig/sidebar-layout.json';
-import siteMeta from '../siteconfig/site-meta.json';
-import AppImage from '../components/core/AppImage.jsx';
-import WidgetRenderer from '../components/registry/WidgetRenderer';
+import layoutConfig from '../../siteconfig/home-layout.json';
+import sidebarLayoutConfig from '../../siteconfig/sidebar-layout.json';
+import siteMeta from '../../siteconfig/site-meta.json';
+import AppImage from '../../components/core/AppImage.jsx';
+import WidgetRenderer from '../../components/registry/WidgetRenderer.jsx';
 
+// I'd like to pull out the rendering of the layout grid and hero header stuff into a separate function in the layouts
+// directory. I think that it would be nice to have a few preset layouts that can be used interchangeably to customise
+// the layout of the page separately from what we display in it and separately from the page itself even.
 export default function Home() {
     // Filter out inactive sections right away
     const activeMainSections = layoutConfig.filter(section => section.visible);

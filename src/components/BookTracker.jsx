@@ -16,7 +16,6 @@ import FilterableCardGallery from "./core/FilterableCardGallery.jsx";
  * @constructor
  */
 export default function BookTracker({cardStyles, rows = 2, cols = 2}) {
-    //
     const books = bookData.map(b => ({ ...b, tags: [b.status, ...(b.genres || [])].filter(Boolean) }));
 
     return (

@@ -5,6 +5,8 @@ import themeConfig from '../siteconfig/theme.json';
 import customPagesConfig from '../siteconfig/custom-pages.json';
 
 // This is the default layout of your website
+// Id like to move the global header/navbar configuration outside of this file
+// I think the footer as well
 export default function RootLayout() {
 
     const themeStyles = {

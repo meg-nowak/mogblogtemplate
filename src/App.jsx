@@ -1,10 +1,10 @@
 // src/App.jsx
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/core/Home.jsx';
 import BookView from './pages/BookView';
 import GameDetail from './pages/GameDetail';
-import CustomPage from './pages/CustomPage';
-import NotFound from './pages/NotFound';
+import CustomPage from './pages/core/CustomPage.jsx';
+import NotFound from './pages/core/NotFound.jsx';
 import Library from "./pages/Library.jsx";
 import RootLayout from "./layouts/RootLayout.jsx";
 import customPagesConfig from './siteconfig/custom-pages.json';
@@ -13,7 +13,7 @@ export default function App() {
   return (
       <HashRouter>
         <Routes>
-          {/* Layout Wrapper: Everything nested here automatically gets headers/footers */}
+          {/* Layout Wrapper: Everything nested here automatically gets the RootLayout applied to it */}
           <Route element={<RootLayout />}>
             {/* Primary Pages */}
             <Route path="/" element={<Home />} />
