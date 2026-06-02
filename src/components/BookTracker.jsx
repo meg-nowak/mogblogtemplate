@@ -20,7 +20,6 @@ export default function BookTracker({cardStyles, rows = 2, cols = 2}) {
 
     return (
         <FilterableCardGallery
-            title="Digital Library"
             items={books}
             rows={rows}
             cols={cols}

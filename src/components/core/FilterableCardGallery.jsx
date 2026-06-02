@@ -1,6 +1,7 @@
 import { Card } from './BaseCard';
 import FilterableGallery from './FilterableGallery';
-
+// I don't think that this function needs to be concerned with the number of rows and columns rendered, I think that
+// should just skip through here straight into the FilterableGallery object.
 /*
 This is an extension to the FilterableGallery that renders Cards and their styling into the renderItem parameter of the FilterableGallery
 It just takes the styles and applies it as well as any item-specific styles to the card object
@@ -10,7 +11,7 @@ I doubt this file will need to functionally change often
 /**
  * Renders item cards and optional styles in a filterable, paged card gallery
  * @param items                 The set of item cards you want to display
- * @param rows                  OPTIONAL number of rows of cards in the gallery, default =2
+ * @param rows                  OPTIONAL number of rows of cards in the gallery, default = 2
  * @param cols                  OPTIONAL number of columns of cards in the gallery, default = 2
  * @param cardStyles            OPTIONAL extra styling for all cards in the gallery
  * @param renderCardContent     A function passed in to define the inner content

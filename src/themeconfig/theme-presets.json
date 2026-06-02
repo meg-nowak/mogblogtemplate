@@ -1,0 +1,23 @@
+{
+  "glassmorphic": {
+    "wrapper": "bg-white/10 backdrop-blur-md border border-white/20 shadow-sm",
+    "card": "bg-white/40 border border-white/30 hover:bg-white/60",
+    "text": "text-slate-800",
+    "muted": "text-slate-500",
+    "interactive": "bg-white/60 hover:bg-white text-slate-800 active:scale-95"
+  },
+  "dark-minimal": {
+    "wrapper": "bg-zinc-950 border border-zinc-800 shadow-none text-zinc-100",
+    "card": "bg-zinc-900 border border-zinc-800 hover:border-zinc-700",
+    "text": "text-zinc-100",
+    "muted": "text-zinc-500",
+    "interactive": "bg-zinc-800 hover:bg-zinc-700 text-amber-400 font-mono"
+  },
+  "pastel-sage": {
+    "wrapper": "bg-[#f0f4f1] border border-[#d8e2dc] text-[#4a5759]",
+    "card": "bg-white/80 border border-[#e6ece7] hover:shadow-md",
+    "text": "text-[#4a5759]",
+    "muted": "text-[#8a9a86]",
+    "interactive": "bg-[#e2ebe4] hover:bg-[#d4dfd6] text-[#4a5759]"
+  }
+}

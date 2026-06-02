@@ -1,21 +1,17 @@
 // src/components/Microblog.jsx
 import { useState, useEffect } from 'react';
-import PaginatedFeed from './core/PaginatedFeed';
 import MicroblogPost from './core/MicroblogPost';
 import { adaptInternalPost } from '../utils/adapters';
+import FilterableGallery from "./core/FilterableGallery.jsx";
 
 /**
  * A Microblog feed
- * @param title                 OPTIONAL The title of your microblog feed. Default is Thoughts & Updates
  * @param itemsPerPage          OPTIONAL The number of posts to display per page
- * @param feedStyles            OPTIONAL Custom styling for each post in your feed
  * @returns {React.JSX.Element} The Microblog element
  * @constructor
  */
 export default function Microblog({
-                                      title = "Thoughts & Updates",
-                                      itemsPerPage = 3,
-                                      feedStyles = {} // Accepts layout config from your JSON!
+                                      itemsPerPage = 5,
                                   }) {
     const [posts, setPosts] = useState([]);
 
@@ -40,10 +36,9 @@ export default function Microblog({
     }, []);
 
     return (
-        <PaginatedFeed
-            title={title}
-            itemsPerPage={itemsPerPage}
-            feedStyles={feedStyles}
+        <FilterableGallery
+            rows={itemsPerPage}
+            cols={1}
             items={posts}
             renderItem={(post) => <MicroblogPost key={post.id} post={post} />}
             emptyMessage={"No posts yet"}
