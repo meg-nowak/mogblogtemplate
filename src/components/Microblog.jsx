@@ -6,11 +6,13 @@ import FilterableGallery from "./core/FilterableGallery.jsx";
 
 /**
  * A Microblog feed
+ * @param title                 OPTIONAL a title for your microblog section
  * @param itemsPerPage          OPTIONAL The number of posts to display per page
  * @returns {React.JSX.Element} The Microblog element
  * @constructor
  */
 export default function Microblog({
+                                      title = "Whats on my mind",
                                       itemsPerPage = 5,
                                   }) {
     const [posts, setPosts] = useState([]);
@@ -36,6 +38,10 @@ export default function Microblog({
     }, []);
 
     return (
+        <section className="space-y-6">
+            <div className="border-b border-theme-border/60 pb-2">
+                <h2 className="text-xl font-semibold tracking-tight text-theme-text">{title}</h2>
+            </div>
         <FilterableGallery
             rows={itemsPerPage}
             cols={1}
@@ -43,5 +49,6 @@ export default function Microblog({
             renderItem={(post) => <MicroblogPost key={post.id} post={post} />}
             emptyMessage={"No posts yet"}
         />
+        </section>
     );
 }

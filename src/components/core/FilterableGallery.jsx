@@ -59,7 +59,7 @@ export default function FilterableGallery({
 
     // BIG FKIN COMPONENT
     return (
-        <section className="space-y-6">
+        <div className="space-y-6">
             {/* 1. Tag Filter Bar */}
             {allTags.length > 0 && (
                 <div className="flex flex-wrap gap-2">
@@ -126,6 +126,6 @@ export default function FilterableGallery({
                     </button>
                 </div>
             )}
-        </section>
+        </div>
     );
 }
