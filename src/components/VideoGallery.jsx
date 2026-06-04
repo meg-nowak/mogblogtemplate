@@ -1,5 +1,5 @@
 import videoData from '../content/videos.json';
-import { Card } from './core/BaseCard';
+import { Card } from './core/Card.jsx';
 import FilterableGallery from './core/FilterableGallery';
 
 // This should be refactored to use the FilterableCardGallery instead of just the FilterableGallery

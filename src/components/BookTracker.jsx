@@ -1,6 +1,6 @@
 import bookData from '../content/books.json';
-import { Card } from './core/BaseCard';
-import FilterableCardGallery from "./core/FilterableCardGallery.jsx";
+import { Card } from './core/Card.jsx';
+import FilterableGallery from "./core/FilterableGallery";
 
 // So I feel like the book tracker should come with special sectioning by TBR, Read, and Currently reading.
 // As well as by genre
@@ -16,7 +16,7 @@ import FilterableCardGallery from "./core/FilterableCardGallery.jsx";
  * @returns {React.JSX.Element} The BookTracker element
  * @constructor
  */
-export default function BookTracker({title = "Currently Reading...", cardStyles, rows = 2, cols = 2}) {
+export default function BookTracker({title = "Currently Reading...", rows = 2, cols = 2}) {
     const books = bookData.map(b => ({ ...b, tags: [b.status, ...(b.genres || [])].filter(Boolean) }));
 
     return (
@@ -24,26 +24,26 @@ export default function BookTracker({title = "Currently Reading...", cardStyles,
             <div className="border-b border-theme-border/60 pb-2">
                 <h2 className="text-xl font-semibold tracking-tight text-theme-text">{title}</h2>
             </div>
-            <FilterableCardGallery
+            <FilterableGallery
                 items={books}
                 rows={rows}
                 cols={cols}
-                cardStyles={cardStyles}
-                renderCardContent={(book, styles) => (
-                    <>
+                renderItem={(book) => (
+                    <Card className={book.styles?.card}>
                         <Card.Image src={book.coverUrl} className="w-16 h-24" />
                         <Card.Content>
                             <Card.Header
                                 title={book.title}
-                                titleClassName={styles.title}
+                                titleClassName={book.styles?.title}
                                 subtitle={book.author}
+                                subtitleClassName={book.styles?.subtitle}
                             />
                             <Card.Body>{book.review}</Card.Body>
                         </Card.Content>
                         <Card.Action to={`/book/${book.id}`}>
                             Read full review
                         </Card.Action>
-                    </>
+                    </Card>
                 )}
             />
         </section>

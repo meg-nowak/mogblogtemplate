@@ -14,7 +14,7 @@ Right now it is being used only by FilterableCardGallery, but it will be extende
 */
 
 /**
- * This takes all of your items and item card styling to show, some settings, and
+ * This component is a taggable, filterable, and paginated gallery of items you pass in.
  * @param items                 The set of item cards you want to display
  * @param rows                  The number of rows of items you want to show per page Default is 2
  * @param cols                  The number of columns of items you want to show per page Default is 2

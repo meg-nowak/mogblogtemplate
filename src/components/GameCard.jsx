@@ -1,5 +1,5 @@
 // src/components/GameCard.jsx
-import { Card } from './core/BaseCard.jsx';
+import { Card } from './core/Card.jsx';
 
 // I don't feel like this needs to be its own function, I think this stuff could be fine inside the game tracker.
 export default function GameCard({ title, platform, status, review, slug, coverUrl }) {

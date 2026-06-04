@@ -66,7 +66,7 @@ export function useFilteredPagination(items = [], itemsPerPage = 4) {
     };
 
     const goToPrevPage = () => {
-        setCurrentPage(prev => Math.max(1, prev - 1));
+        setCurrentPage(prev => Math.max(1, prev - 1)) ;
     };
 
     // --- 5. Return the API ---
