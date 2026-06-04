@@ -19,7 +19,7 @@ Right now it is being used only by FilterableCardGallery, but it will be extende
  * @param rows                  The number of rows of items you want to show per page Default is 2
  * @param cols                  The number of columns of items you want to show per page Default is 2
  * @param emptyMessage          The message you want to show when there are no cards to display. Defaults to No items found
- * @param themePreset           Theme preset to use
+ * @param styles                OPTIONAL additional styling
  * @param renderItem            How you want your item to look like
  * @returns {React.JSX.Element} The FilterableGallery element
  * @constructor
@@ -30,7 +30,7 @@ export default function FilterableGallery({
                                               cols = 2,
                                               emptyMessage = "No items found.",
                                               renderItem,
-                                              themePreset = "default"
+                                              styles
                                               }) {
     // This handles all of the filtering and pagination logic and all of the yucky react stuff
     const {
@@ -73,7 +73,7 @@ export default function FilterableGallery({
                                     isActive
                                         ? 'bg-(--theme-secondary)/20 border-(--theme-secondary)/40 text-(--theme-primary) shadow-sm'
                                         : 'bg-(--theme-surface)/50 border-(--theme-border)/60 text-(--theme-text) opacity-70 hover:opacity-100 hover:bg-(--theme-surface)'
-                                }`}
+                                } ${styles?.interactive}`}
                             >
                                 #{tag}
                             </button>
@@ -108,19 +108,19 @@ export default function FilterableGallery({
                     <button
                         onClick={goToPrevPage}
                         disabled={currentPage === 1}
-                        className="text-sm px-4 py-2 rounded-xl font-medium text-(--theme-text) bg-(--theme-surface)/50 border border-(--theme-border)/60 hover:bg-(--theme-surface) transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                        className={"text-sm px-4 py-2 rounded-xl font-medium text-(--theme-text) bg-(--theme-surface)/50 border border-(--theme-border)/60 hover:bg-(--theme-surface) transition-all disabled:opacity-0 " + styles?.interactive}
                     >
                         &larr; Previous
                     </button>
 
-                    <span className="text-sm font-medium text-(--theme-text) opacity-60">
+                    <span className={"text-sm font-medium text-(--theme-text) opacity-60 " + styles?.text}>
                         Page {currentPage} of {totalPages}
                     </span>
 
                     <button
                         onClick={goToNextPage}
                         disabled={currentPage === totalPages}
-                        className="text-sm px-4 py-2 rounded-xl font-medium text-(--theme-text) bg-(--theme-surface)/50 border border-(--theme-border)/60 hover:bg-(--theme-surface) transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                        className={"text-sm px-4 py-2 rounded-xl font-medium text-(--theme-text) bg-(--theme-surface)/50 border border-(--theme-border)/60 hover:bg-(--theme-surface) transition-all disabled:opacity-0 " + styles?.interactive}
                     >
                         Next &rarr;
                     </button>
