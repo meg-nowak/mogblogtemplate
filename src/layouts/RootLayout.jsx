@@ -16,7 +16,7 @@ export default function RootLayout() {
     };
 
     return (
-        <div style={themeStyles} className="min-h-screen bg-(--theme-bg) text-(--theme-text) flex flex-col font-(--theme-font) transition-colors duration-500">
+        <div style={themeStyles} className="min-h-screen bg-[url(public/a4c2fd537c70381105d5a4a7f41a794c.jpg)] text-(--theme-text) flex flex-col font-(--theme-font) transition-colors duration-500">
             {/* Modular Layout Elements */}
             <Navbar />
 

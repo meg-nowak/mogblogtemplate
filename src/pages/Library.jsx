@@ -1,6 +1,6 @@
 // src/pages/Library.jsx
 import { useState, useMemo } from 'react';
-import bookData from '../content/books.json';
+import bookData from '../content/data/books.json';
 
 const ITEMS_PER_PAGE = 6;
 

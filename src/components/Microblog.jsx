@@ -38,7 +38,7 @@ export default function Microblog({
     }, []);
 
     return (
-        <section className="space-y-6">
+        <section className="space-y-6 p-2 ">
             <div className="border-b border-theme-border/60 pb-2">
                 <h2 className="text-xl font-semibold tracking-tight text-theme-text">{title}</h2>
             </div>

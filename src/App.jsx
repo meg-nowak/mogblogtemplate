@@ -8,6 +8,7 @@ import NotFound from './pages/core/NotFound.jsx';
 import Library from "./pages/Library.jsx";
 import RootLayout from "./layouts/RootLayout.jsx";
 import customPagesConfig from './siteconfig/custom-pages.json';
+import LocalDashboard from "./pages/core/LocalDashboard.jsx";
 
 export default function App() {
   return (
@@ -30,7 +31,7 @@ export default function App() {
                 />
             ))}
           </Route>
-
+            <Route path="/admin" element={<LocalDashboard />} />
           {/* Fallback (Stays outside layout so 404 is a clean canvas if desired) */}
           <Route path="*" element={<NotFound />} />
         </Routes>

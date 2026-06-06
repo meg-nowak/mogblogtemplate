@@ -1,6 +1,6 @@
 // src/pages/BookView.jsx
 import { useParams, Link } from 'react-router-dom';
-import bookData from '../content/books.json';
+import bookData from '../content/data/books.json';
 import AppImage from '../components/core/AppImage.jsx';
 
 export default function BookView() {

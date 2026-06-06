@@ -1,4 +1,4 @@
-import videoData from '../content/videos.json';
+import videoData from '../content/data/videos.json';
 import { Card } from './core/Card.jsx';
 import FilterableGallery from './core/FilterableGallery';
 import themePresets from "../themeconfig/theme-presets";
@@ -11,7 +11,7 @@ export default function VideoGallery({title = "What I've been watching", themePr
     const styles = themePresets[themePreset];
 
     return (
-        <section className={"space-y-6 " + styles?.wrapper}>
+        <section className={"space-y-6 p-2 " + styles?.wrapper}>
             <div className="border-b border-theme-border/60 pb-2">
                 <h2 className="text-xl font-semibold tracking-tight text-theme-text">{title}</h2>
             </div>

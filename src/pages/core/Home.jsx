@@ -14,7 +14,7 @@ export default function Home() {
     const activeSidebarSections = sidebarLayoutConfig.filter(section => section.visible);
 
     return (
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 bg-white/50 backdrop-blur-md border border-white/20 shadow-sm rounded-md">
 
             {/* Hero Header */}
             <AppImage

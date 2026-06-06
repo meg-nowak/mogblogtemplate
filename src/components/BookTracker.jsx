@@ -1,4 +1,4 @@
-import bookData from '../content/books.json';
+import bookData from '../content/data/books.json';
 import { Card } from './core/Card.jsx';
 import FilterableGallery from "./core/FilterableGallery";
 import themePresets from "../themeconfig/theme-presets";

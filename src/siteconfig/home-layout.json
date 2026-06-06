@@ -26,5 +26,13 @@
     "id": "microblog",
     "type": "microBlog",
     "visible": true
+  },
+  {
+    "id": "my-sidebar-webring",
+    "type": "webringSidebar",
+    "visible": true,
+    "props": {
+      "variant": "retro"
+    }
   }
 ]

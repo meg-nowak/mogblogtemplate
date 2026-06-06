@@ -4,6 +4,7 @@ import Microblog from '../Microblog';
 import VideoGallery from '../VideoGallery';
 import BookTracker from '../BookTracker';
 import GameTracker from '../GameTracker';
+import WebringSidebar from "../WebringSidebar.jsx";
 // import AuthorBio from '../AuthorBio'; // Extracted from the inline code!
 
 /**
@@ -16,5 +17,6 @@ export const WidgetRegistry = {
     bookTracker: BookTracker,
     videoGallery: VideoGallery,
     microBlog: Microblog,
-    gameTracker: GameTracker
+    gameTracker: GameTracker,
+    webringSidebar: WebringSidebar,
 };

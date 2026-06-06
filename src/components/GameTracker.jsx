@@ -1,4 +1,4 @@
-import gameData from '../content/games.json';
+import gameData from '../content/data/games.json';
 import GameCard from './GameCard';
 
 // I would eventually like to make multiple versions of this - one more library-like (like the BookTracker) and this one.
