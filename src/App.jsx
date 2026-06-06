@@ -14,8 +14,11 @@ export default function App() {
   return (
       <HashRouter>
         <Routes>
-          {/* Layout Wrapper: Everything nested here automatically gets the RootLayout applied to it */}
-          <Route element={<RootLayout />}>
+            {/* Local site editing dashboard */}
+            <Route path="/admin" element={<LocalDashboard />} />
+
+            {/* Layout Wrapper: Everything nested here automatically gets the RootLayout applied to it */}
+            <Route element={<RootLayout />}>
             {/* Primary Pages */}
             <Route path="/" element={<Home />} />
             <Route path="/book/:bookId" element={<BookView />} />
@@ -24,14 +27,14 @@ export default function App() {
 
             {/* Dynamic Custom Pages from JSON */}
             {customPagesConfig.map((page) => (
-                <Route
-                    key={page.slug}
-                    path={":slug"}
-                    element={<CustomPage slug={page.slug} />}
-                />
+            <Route
+                key={page.slug}
+                path={`/${page.slug}`}
+                element={<CustomPage slug={page.slug} />}
+            />
             ))}
           </Route>
-            <Route path="/admin" element={<LocalDashboard />} />
+
           {/* Fallback (Stays outside layout so 404 is a clean canvas if desired) */}
           <Route path="*" element={<NotFound />} />
         </Routes>
