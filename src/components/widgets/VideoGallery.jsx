@@ -1,7 +1,7 @@
-import videoData from '../content/data/videos.json';
-import { Card } from './core/Card.jsx';
-import FilterableGallery from './core/FilterableGallery';
-import themePresets from "../themeconfig/theme-presets";
+import videoData from '../../content/data/videos.json';
+import { Card } from '../core/Card.jsx';
+import FilterableGallery from '../core/FilterableGallery.jsx';
+import themePresets from "../../themeconfig/theme-presets.json";
 
 // This should be refactored to use the FilterableCardGallery instead of just the FilterableGallery
 // I'm also not 100% sold on this name for this component

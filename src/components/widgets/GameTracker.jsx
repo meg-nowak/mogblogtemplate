@@ -1,5 +1,5 @@
-import gameData from '../content/data/games.json';
-import GameCard from './GameCard';
+import gameData from '../../content/data/games.json';
+import GameCard from '../GameCard.jsx';
 
 // I would eventually like to make multiple versions of this - one more library-like (like the BookTracker) and this one.
 

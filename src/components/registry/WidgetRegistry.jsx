@@ -1,10 +1,10 @@
 // src/components/registry/WidgetRegistry.jsx
 
-import Microblog from '../Microblog';
-import VideoGallery from '../VideoGallery';
-import BookTracker from '../BookTracker';
-import GameTracker from '../GameTracker';
-import WebringSidebar from "../WebringSidebar.jsx";
+import Microblog from '../widgets/Microblog.jsx';
+import VideoGallery from '../widgets/VideoGallery.jsx';
+import BookTracker from '../widgets/BookTracker.jsx';
+import GameTracker from '../widgets/GameTracker.jsx';
+import WebringSidebar from "../widgets/WebringSidebar.jsx";
 // import AuthorBio from '../AuthorBio'; // Extracted from the inline code!
 
 /**

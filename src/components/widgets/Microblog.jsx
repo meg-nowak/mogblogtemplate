@@ -1,8 +1,8 @@
 // src/components/Microblog.jsx
 import { useState, useEffect } from 'react';
-import MicroblogPost from './core/MicroblogPost';
-import { adaptInternalPost } from '../utils/adapters';
-import FilterableGallery from "./core/FilterableGallery.jsx";
+import MicroblogPost from '../core/MicroblogPost.jsx';
+import { adaptInternalPost } from '../../utils/adapters.js';
+import FilterableGallery from "../core/FilterableGallery.jsx";
 
 /**
  * A Microblog feed

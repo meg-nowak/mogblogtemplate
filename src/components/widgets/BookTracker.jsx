@@ -1,7 +1,7 @@
-import bookData from '../content/data/books.json';
-import { Card } from './core/Card.jsx';
-import FilterableGallery from "./core/FilterableGallery";
-import themePresets from "../themeconfig/theme-presets";
+import bookData from '../../content/data/books.json';
+import { Card } from '../core/Card.jsx';
+import FilterableGallery from "../core/FilterableGallery.jsx";
+import themePresets from "../../themeconfig/theme-presets.json";
 
 // So I feel like the book tracker should come with special sectioning by TBR, Read, and Currently reading.
 // As well as by genre

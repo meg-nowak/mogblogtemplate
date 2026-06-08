@@ -5,7 +5,6 @@ import { useDraggable } from '../../hooks/useDraggable';
 export default function DevDataInspector({ data, label }) {
     const [isOpen, setIsOpen] = useState(false);
 
-    // Consume our reusable behavior!
     const { position, isDragging, handleMouseDown } = useDraggable({ x: 120, y: 120 });
 
     if (!import.meta.env.DEV) return null;
@@ -25,7 +24,7 @@ export default function DevDataInspector({ data, label }) {
             {/* Floating Inspector Window */}
             {isOpen && (
                 <div
-                    className="fixed z-[100] bg-white border border-[#e2ebe4] rounded-2xl shadow-2xl w-full max-w-lg flex flex-col overflow-hidden"
+                    className="fixed z-100 bg-white border border-[#e2ebe4] rounded-2xl shadow-2xl w-full max-w-lg flex flex-col overflow-hidden"
                     style={{ top: `${position.y}px`, left: `${position.x}px` }}
                 >
                     {/* DRAG HANDLE */}

@@ -1,7 +1,7 @@
 // src/components/widgets/WebringSidebar.jsx
 import { useState } from 'react';
-import webringData from '../content/data/webring.json';
-import DevDataInspector from './dev/DevDataInspector';
+import webringData from '../../content/data/webring.json';
+import DevDataInspector from '../dev/DevDataInspector.jsx';
 
 export default function WebringSidebar({ variant = 'lofi' }) {
     const [currentIndex, setCurrentIndex] = useState(0);
