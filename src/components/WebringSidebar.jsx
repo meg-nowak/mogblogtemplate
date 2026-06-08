@@ -1,6 +1,7 @@
 // src/components/widgets/WebringSidebar.jsx
 import { useState } from 'react';
 import webringData from '../content/data/webring.json';
+import DevDataInspector from './dev/DevDataInspector';
 
 export default function WebringSidebar({ variant = 'lofi' }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,6 +38,8 @@ export default function WebringSidebar({ variant = 'lofi' }) {
     // --- Variant 1: Lo-Fi Web Index (Calming & Soft) ---
     if (variant === 'lofi') {
         return (
+            <>
+            <DevDataInspector data={webringData} label="Webring JSON" />
             <div className="bg-[#f8fcf9] border border-[#e2ebe4] p-5 rounded-2xl shadow-sm text-slate-700 transition-all duration-500">
                 <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-semibold tracking-widest text-[#8a9a86] uppercase">Webring</span>
@@ -64,12 +67,15 @@ export default function WebringSidebar({ variant = 'lofi' }) {
                     </a>
                 </div>
             </div>
+            </>
         );
     }
 
     // --- Variant 2: Retro Desktop (Sharp & Utilitarian) ---
     if (variant === 'retro') {
         return (
+            <>
+            <DevDataInspector data={webringData} label="Webring JSON" />
             <div className="bg-zinc-200 border-2 border-zinc-50 border-r-zinc-500 border-b-zinc-500 p-1 font-mono text-xs text-black">
                 <div className="bg-purple-400 text-white px-2 py-0.5 font-bold flex justify-between items-center">
                     <span>Webring.exe</span>
@@ -85,12 +91,15 @@ export default function WebringSidebar({ variant = 'lofi' }) {
                     <button onClick={nextSite} className="flex-1 bg-zinc-200 border-2 border-zinc-50 border-r-zinc-500 border-b-zinc-500 active:border-zinc-500 active:border-r-zinc-50 active:border-b-zinc-50">Next &gt;</button>
                 </div>
             </div>
+            </>
         );
     }
 
     // --- Variant 3: Decentralized Badges (Grid Pattern) ---
     if (variant === 'badges') {
         return (
+            <div>
+                <DevDataInspector data={webringData} label="Webring JSON" />
             <div className="flex flex-wrap gap-2 p-2">
                 {webringData.map(site => (
                     <a
@@ -105,6 +114,7 @@ export default function WebringSidebar({ variant = 'lofi' }) {
                     </a>
                 ))}
             </div>
+                </div>
         );
     }
 

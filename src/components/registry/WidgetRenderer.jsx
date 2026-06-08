@@ -2,6 +2,7 @@
 import { WidgetRegistry } from './WidgetRegistry';
 import WidgetErrorBoundary from "./WidgetErrorBoundary";
 import WidgetErrorCard from './WidgetErrorCard';
+import DevDataInspector from '../dev/DevDataInspector';
 
 export default function WidgetRenderer({ section }) {
     const Widget = WidgetRegistry[section.type];
@@ -25,9 +26,25 @@ export default function WidgetRenderer({ section }) {
         );
     }
 
+    // Peel off the wrapper props
+    const {  ...widgetProps } = section.props || {};
+
+    // We assume the data driving the widget is passed in 'props'
+    // or specifically under a 'data' key within your layout JSON
+    const dataToInspect = widgetProps.items || widgetProps.data || widgetProps;
+
+
+
     // Catch functional component data errors (Phase 2)
     return (
-        <div className="w-full">
+        <div className="w-full relative">
+            {/* The Global Debugger for this specific widget */}
+            {import.meta.env.DEV && (
+                <DevDataInspector
+                    data={dataToInspect}
+                    label={`Debug: ${section.type} (${section.id})`}
+                />
+            )}
             <WidgetErrorBoundary type={section.type}>
                 <Widget {...section.props} />
             </WidgetErrorBoundary>

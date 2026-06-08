@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import themeConfig from '../themeconfig/theme.json';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import DevEditButton from "../components/dev/DevEditButton.jsx";
 
 export default function RootLayout() {
     const themeStyles = {
@@ -27,6 +28,8 @@ export default function RootLayout() {
 
             {/* Modular Footer */}
             <Footer />
+
+            <DevEditButton />
         </div>
     );
 }
