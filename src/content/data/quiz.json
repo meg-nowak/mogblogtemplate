@@ -1,0 +1,69 @@
+{
+  "title": "React Architecture & Lifecycle Quiz",
+  "questions": [
+    {
+      "title": "What happens if a state variable used inside a useEffect hook is omitted from its dependency array?",
+      "options": [
+        "React will throw a critical compile-time error and halt execution.",
+        "The effect closure captures the initial value of the state and fails to see subsequent updates (stale state).",
+        "The effect automatically detects the variable and re-runs anyway to prevent errors.",
+        "The state variable is swept from browser memory to prevent leaks."
+      ],
+      "correctAnswers": [1]
+    },
+    {
+      "title": "Why should you never directly mutate a state array or prop array using methods like .sort() or .push() in React?",
+      "options": [
+        "Because JavaScript arrays are structurally immutable by default in modern runtimes.",
+        "It mutates the underlying reference in place, bypassing React's reconciliation engine and preventing re-renders.",
+        "It forces the child components to automatically switch into read-only mode."
+      ],
+      "correctAnswers": [1]
+    },
+    {
+      "title": "If two completely separate components consume the exact same custom React hook, how is their state managed?",
+      "options": [
+        "They share a single synchronized state instance; updating it in one updates it in both.",
+        "Each component instance instantiates its own isolated, completely independent copy of the hook's state.",
+        "The second component to mount overrides and locks out the state of the first component."
+      ],
+      "correctAnswers": [1]
+    },
+    {
+      "title": "In React's <StrictMode>, why do components execute their render phase twice during development?",
+      "options": [
+        "To verify that the local dev server's hot-module-reloading mechanism is active.",
+        "To intentionally surface unintended side effects, helping ensure components behave as pure functions.",
+        "To pre-render both the standard view and the fallback layout simultaneously."
+      ],
+      "correctAnswers": [1]
+    },
+    {
+      "title": "Why is using an array element's loop index as its 'key' prop discouraged when list items can be re-ordered, filtered, or deleted?",
+      "options": [
+        "It forces the browser to re-download the layout engine from the network.",
+        "Indices are primitive numbers and React strictly requires cryptographic strings for keys.",
+        "React maps internal state to the index; if the data shifts but the index remains, the wrong state maps to the wrong UI element."
+      ],
+      "correctAnswers": [2]
+    }
+  ],
+  "grades": [
+    {
+      "message": "Absolute React Deity. Dan Abramov is shaking. You completely mastered the nuance of reconciliation and closures!",
+      "minScorePercentage": 0.9
+    },
+    {
+      "message": "Solid Production-Ready Engineer. You've got a fantastic grasp on hooks and the component lifecycle.",
+      "minScorePercentage": 0.6
+    },
+    {
+      "message": "Junior Dev Energy. You've got the basics down, but watch out for those state mutation and rendering traps!",
+      "minScorePercentage": 0.3
+    },
+    {
+      "message": "Back to the docs! Time to write some more custom markdown documentation files to iron out the fundamentals.",
+      "minScorePercentage": 0
+    }
+  ]
+}

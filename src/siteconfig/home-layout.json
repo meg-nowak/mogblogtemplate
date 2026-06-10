@@ -34,5 +34,13 @@
     "props": {
       "variant": "retro"
     }
+  },
+  {
+    "id": "my-quiz",
+    "type": "multichoiceQuiz",
+    "visible": true,
+    "props": {
+      "themePreset": "pastel-sage"
+    }
   }
 ]

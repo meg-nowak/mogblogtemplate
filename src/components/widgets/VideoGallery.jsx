@@ -3,9 +3,6 @@ import { Card } from '../core/Card.jsx';
 import FilterableGallery from '../core/FilterableGallery.jsx';
 import themePresets from "../../themeconfig/theme-presets.json";
 
-// This should be refactored to use the FilterableCardGallery instead of just the FilterableGallery
-// I'm also not 100% sold on this name for this component
-
 export default function VideoGallery({title = "What I've been watching", themePreset="glassmorphic"}) {
     // Get theme information
     const styles = themePresets[themePreset];
